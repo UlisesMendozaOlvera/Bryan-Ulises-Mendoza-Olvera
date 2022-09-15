@@ -1,0 +1,17 @@
+{
+    "Empleados":{
+"100": {
+    "Nombre": "Alberto",
+    "Apellido": "Perez"
+},
+"200": {
+    "Nombre": "Tony",
+    "Apellido": "Mendez"
+},
+"300": {
+    "Nombre": "Eduardo",
+    "Apellido": "Marin"
+}
+}
+
+}
