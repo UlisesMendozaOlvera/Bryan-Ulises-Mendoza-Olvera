@@ -1,6 +1,13 @@
+//Modulos
 const express = require('express');
 const cors = require('cors')
 const morgan = require('morgan')
+
+//Modulos propios JS
+const cadena=require('./cadena')
+//const cadenasss = require('./cadenasss')
+//const {pasarMayusculas,quitarEspacios} = require('./cadenas')
+
 var fs = require('fs')
 var path = require('path')
 const app = express()
@@ -17,13 +24,13 @@ var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {
 app.use(morgan('combined', { stream: accessLogStream }))
 
 //Funcion middleware 
-// app.use((req, res, next) => {
-//     console.log("Primer funcion middleware")
-//     next()
-// }, (req, res, next) => {
-//     console.log("Segunda funcion middleware")
-//     next()
-// })
+ app.use((req, res, next) => {
+     console.log("Primer funcion middleware")
+     next()
+ }, (req, res, next) => {
+     console.log("Segunda funcion middleware")
+     next()
+ })
 //GET
 app.get('/', (req, res) => {
     // res.send('Servidor Express contestando')
@@ -45,9 +52,19 @@ app.post('/', (req, res) => {
 })
 app.post('/texto', (req, res) => {
     console.log(req.body)
-    let may = req.body.toUpperCase()
-    let sinesp = req.body.trim()
-    let longi = req.body.length
+    //Modulo cadenasss
+    //let may= cadenasss.pasarMayusculas(req.body)
+    //let sinesp = cadenasss.quitarEspacios(req.body)
+    //let longi = cadenasss.obtenerLongitud(req.body)
+    
+    //modulo cadenas
+    //let may = pasarMayusculas(req.body)
+    //let sinesp = quitarEspacios(req.body)
+    
+    //Modulo cadena
+    let may =cadena.pasarMayusculas(req.body) 
+    let sinesp = cadena.quitarEspacios(req.body)
+    let longi = cadena.obtenerLongitud(req.body)
     res.json({
         mayusculas: may,
         sinespacios: sinesp,
