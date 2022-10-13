@@ -15,23 +15,35 @@
     <input id="resultado" type="text">
 
     <script type="module">
-        import {pasarMayusculas, quitarEspacios} from "./moduloesm"
-        //import * as funciones from './moduloesm'
-        document.getElementById("btnmay").addEventListener("click",function(){
-                let cad = document.getElementById("cadena").value;
-                let cadenaMay = pasarMayusculas(cad)
-                console.log(cadenaMay)
-                document.getElementById("resultado").value=cadenaMay;    
+        // import {pasarMayusculas, quitarEspacios} from "./moduloesm"
+        import * as funciones from './moduloesm'
+//Primera Forma
+        // document.getElementById("btnmay").addEventListener("click",function(){
+        //         let cad = document.getElementById("cadena").value;
+        //         let cadenaMay = pasarMayusculas(cad)
+        //         console.log(cadenaMay)
+        //         document.getElementById("resultado").value=cadenaMay;    
             
+        // })
+        // document.getElementById("btn").addEventListener("click", function () {
+        //         let cad = document.getElementById("cadena").value;
+        //         let cadenaSinEsp = quitarEspacios(cad)
+        //         console.log(cadenaSinEsp)
+        //         document.getElementById("resultado").value=cadenaSinEsp;
+        //     })
+// Segunda Forma 
+        document.getElementById("btnmay").addEventListener("click", function () {
+                let cad = document.getElementById("cadena").value;
+                let cadenaMay = funciones.pasarMayusculas(cad)
+                console.log(cadenaMay)
+                document.getElementById("resultado").value = cadenaMay;
         })
         document.getElementById("btn").addEventListener("click", function () {
                 let cad = document.getElementById("cadena").value;
-                let cadenaSinEsp = quitarEspacios(cad)
+                let cadenaSinEsp = funciones.quitarEspacios(cad)
                 console.log(cadenaSinEsp)
-                document.getElementById("resultado").value=cadenaSinEsp;
-            
-            
-            })
+                document.getElementById("resultado").value = cadenaSinEsp;
+        })
     </script>
 </body>
 </html>
