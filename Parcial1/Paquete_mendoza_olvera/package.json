@@ -1,0 +1,11 @@
+{
+  "name": "paquete_mendoza_olvera",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Modulo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "bryan mendoza",
+  "license": "ISC"
+}
