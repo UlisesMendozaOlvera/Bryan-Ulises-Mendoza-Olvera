@@ -1,10 +1,8 @@
 const express = require('express');
-const cors = require('cors')
-
-app.use(cors())
-app.use(express.text())
-app.use(express.json())
-
+const cors = require('cors');
+app.use(express.text());
+app.use(express.json());
+app.use(cors());
 
 //GET
 app.get('/', (req, res) => {
