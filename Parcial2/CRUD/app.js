@@ -17,24 +17,14 @@ app.get('/consultar/:id_empleado',async (req, res) => {
     res.json(responseDb)
 })
 app.post('/insertar', async (req, res) => {
-   
-    const id_empleado=req.body.id_empleado;
-    const nombre=req.body.nombre;
-    const apellido=req.body.apellido;
-    const email=req.body.email
-    console.log(id_empleado,nombre,apellido,email);
-    await pool.execute(`INSERT INTO empleado VALUES (?,?,?,?)`,[id_empleado,nombre,apellido,email])
-    res.json({'Resultado':`Empleado insertado ID : ${id_empleado} Nombre : ${nombre} Apellido: ${apellido} Email : ${email}`})
+    const valores=[req.body.id_empleado,req.body.nombre,req.body.apellido,req.body.email]
+    await pool.execute(`INSERT INTO empleado VALUES (?,?,?,?)`,valores)
+    res.json({ 'Resultado': `Empleado insertado ID : ${req.body.id_empleado} Nombre : ${req.body.nombre} Apellido: ${req.body.apellido} Email : ${req.body.email}`})
 })
-app.put('/actualizar/:id_empleado', async (req, res) => {
-    const id=req.params.id_empleado;
-    const id_empleado = req.body.id_empleado;
-    const nombre = req.body.nombre;
-    const apellido = req.body.apellido;
-    const email = req.body.email;
-    //console.log(id_empleado,nombre,apellido,email)
-    await pool.execute(`UPDATE empleado SET id_empleado=?,nombre=?,apellido=?,email=? WHERE empleado.id_empleado=?`,[id_empleado,nombre,apellido,email,id])
-    res.json({ 'Se Actualizo el Empleado ': nombre })
+app.put('/actualizar/:id', async (req, res) => {
+    const valores = [req.body.id_empleado, req.body.nombre, req.body.apellido, req.body.email,req.params.id]
+    await pool.execute(`UPDATE empleado SET id_empleado=?,nombre=?,apellido=?,email=? WHERE empleado.id_empleado=?`,valores)
+    res.json({ 'Se Actualizo el Empleado con ID ': req.params.id })
 })
 app.delete('/eliminar/:id_empleado', async (req, res) => {
     const DataID = req.params.id_empleado;
