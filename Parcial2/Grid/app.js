@@ -1,11 +1,12 @@
 import express from 'express'
 import { pool } from './conectionDB.js'
-
+import cors from 'cors'
 
 const app = express()
 app.use(express.json())
+app.use(cors({origin:'http://localhost:8086'}))
 
-app.get('/consultar/*', async (req, res) => {
+app.get('/consultar/*', cors(),async (req, res) => {
     
     //console.log('Mensaje : ', DataID);
     const [responseDb] = await pool.query(`SELECT * FROM empleado`)
