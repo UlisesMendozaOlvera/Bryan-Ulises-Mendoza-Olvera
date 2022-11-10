@@ -1,0 +1,1 @@
+(()=>{"use strict";console.log("Hola webpack"),console.log(3*3)})();
