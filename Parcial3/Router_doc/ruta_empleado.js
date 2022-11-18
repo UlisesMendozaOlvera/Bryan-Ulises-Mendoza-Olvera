@@ -11,7 +11,15 @@ var con = mySQL.createConnection({
     password: '',
     port: '3306'
 });
-
+/**
+* @swagger
+* /consultar/*:
+*   get:
+*        description: consulta todos los empleados
+*        responses:
+*           200:
+*               description: Returns a mysterious string.
+*/
 router.get('/*', function(req, res) {
     let sql = (`SELECT * FROM empleado`)
     let query = con.query(sql,(err,result)=>{
@@ -19,6 +27,15 @@ router.get('/*', function(req, res) {
         res.send(result)
     });
 })
+/**
+* @swagger
+* /consultar/:id_empleado:
+*   get:
+*        description: consulta un empleado
+*        responses:
+*           200:
+*               description: Returns a mysterious string.
+*/
 router.get('/:id_empleado',function(req, res) {
     let sql = (`SELECT * FROM empleado WHERE id_empleado=${req.params.id_empleado}`)
     let query = con.query(sql,(err,result)=>{
@@ -26,6 +43,15 @@ router.get('/:id_empleado',function(req, res) {
         res.send(result)
     });
 })
+/**
+* @swagger
+* /consultar/insertar:
+*   post:
+*       description: insertar empleados
+*       responses:
+*           200:
+*           description: Returns a mysterious string.
+*/
 router.post('/insertar', function (req, res) {
     let valores={'id_empleado':req.body.id_empleado,'nombre':req.body.nombre,'apellido':req.body.apellido,'email':req.body.email}
     let sql=(`INSERT INTO empleado SET ?`)
@@ -34,6 +60,15 @@ router.post('/insertar', function (req, res) {
         res.send({ 'Resultado': `Empleado insertado ID : ${req.body.id_empleado} Nombre : ${req.body.nombre} Apellido: ${req.body.apellido} Email : ${req.body.email}`})
     });
 })
+/**
+* @swagger
+* /consultar/:id:
+*   put:
+*        description: Actualiza un empleado
+*        responses:
+*           200:
+*               description: Returns a mysterious string.
+*/
 router.put('/:id', (req, res) => {
     
     let valores={'id_empleado':req.body.id_empleado,'nombre':req.body.nombre,'apellido':req.body.apellido,'email':req.body.email}
@@ -43,6 +78,15 @@ router.put('/:id', (req, res) => {
         res.send({ 'Se Actualizo el Empleado con ID ': req.params.id })
     });
 })
+/**
+* @swagger
+* /consultar/:id_empleado:
+*   delete:
+*        description: elimina un empleado
+*        responses:
+*           200:
+*               description: Returns a mysterious string.
+*/
 router.delete('/:id_empleado',  (req, res) => {
    
     let sql=(`DELETE FROM empleado WHERE id_empleado=${req.params.id_empleado}`)
