@@ -1,3 +1,3 @@
 import {cuadrado} from './modulo'
-console.log("Hola webpack")
+console.log("Hola vite")
 console.log(cuadrado(3))

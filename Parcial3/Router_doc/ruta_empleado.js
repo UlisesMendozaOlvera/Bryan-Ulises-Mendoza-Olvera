@@ -13,14 +13,14 @@ var con = mySQL.createConnection({
 });
 /**
 * @swagger
-* /consultar/*:
+* /consultar/todos:
 *   get:
 *        description: consulta todos los empleados
 *        responses:
 *           200:
 *               description: Returns a mysterious string.
 */
-router.get('/*', function(req, res) {
+router.get('/todos', function(req, res) {
     let sql = (`SELECT * FROM empleado`)
     let query = con.query(sql,(err,result)=>{
         if(err) throw err;

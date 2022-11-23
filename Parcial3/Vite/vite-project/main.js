@@ -1,6 +1,7 @@
 import './style.css'
 import javascriptLogo from './javascript.svg'
 import { setupCounter } from './counter.js'
+import {cuadrado } from './src/modulo.js'
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -11,6 +12,8 @@ document.querySelector('#app').innerHTML = `
       <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
     </a>
     <h1>Hello Vite!</h1>
+    <h3>${cuadrado(5)}</h3>
+    
     <div class="card">
       <button id="counter" type="button"></button>
     </div>
